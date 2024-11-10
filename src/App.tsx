@@ -17,7 +17,7 @@ function App() {
 
     try {
       // Initialize Gemini API
-      const genAI = new GoogleGenerativeAI('AIzaSyC7oFbW7U41_-e8cWF14C3i2lTfvGd64g4');
+      const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GOOGLE_API_KEY!);
       const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
 
       // Get response from Gemini
