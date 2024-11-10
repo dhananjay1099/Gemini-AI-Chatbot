@@ -3,11 +3,13 @@ import logo from './logo.svg';
 import './App.css';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
+
 function App() {
   const [messages, setMessages] = React.useState<Array<{role: 'user' | 'bot', content: string}>>([]);
   const [input, setInput] = React.useState('');
 
   const handleSend = async () => {
+    
     if (!input.trim()) return;
     
     // Add user message
@@ -16,8 +18,7 @@ function App() {
     setInput('');
 
     try {
-      // Initialize Gemini API
-      const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GOOGLE_API_KEY!);
+      const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GEMINI_API_KEY ?? '');
       const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
 
       // Get response from Gemini
